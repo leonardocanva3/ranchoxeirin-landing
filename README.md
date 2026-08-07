@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rancho Xeirin Landing
 
-## Getting Started
+Site institucional do Rancho Xeirin, construído com Next.js, TypeScript, Tailwind CSS e App Router.
 
-First, run the development server:
+## Stack
+
+- Next.js 16
+- React 19
+- TypeScript
+- Tailwind CSS
+- `next/font`
+- Metadata API, `robots.txt`, `sitemap.xml` e JSON-LD
+
+## Como rodar
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Build de produção:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run lint
+npm run typecheck
+npm run build
+npm run start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Variáveis de Ambiente
 
-## Learn More
+Copie `.env.example` para `.env.local` no desenvolvimento ou configure a mesma variável na Vercel:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+NEXT_PUBLIC_SITE_URL=
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Use o domínio real de produção, com protocolo, quando existir. Sem essa variável, o projeto mantém comportamento seguro: `robots.txt` bloqueia indexação e não gera canonical/sitemap com domínio falso.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Onde alterar conteúdo
 
-## Deploy on Vercel
+- Conteúdo principal, galeria, comodidades, WhatsApp e dados pendentes: `src/content/landing.ts`
+- SEO base e social metadata: `src/config/seo.ts`
+- URL do site e caminhos públicos: `src/config/site.ts`
+- Dados estruturados: `src/config/structured-data.ts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Assets
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Imagens otimizadas: `public/images`
+- Ícones: `public/icons`
+- Vídeos: `public/videos`
+
+Os PNGs originais usados como fonte foram preservados localmente em `asset-backups/original-public` e não devem ser publicados.
+
+## Deploy na Vercel
+
+1. Crie o projeto na Vercel apontando para este repositório.
+2. Configure `NEXT_PUBLIC_SITE_URL` com o domínio real de produção.
+3. Use o comando padrão de build: `npm run build`.
+4. Após associar o domínio, valide `/robots.txt`, `/sitemap.xml`, canonical, Open Graph e JSON-LD.
+
+Não publique previews como produção indexável. Sem domínio real configurado, o site permanece com `Disallow: /`.
