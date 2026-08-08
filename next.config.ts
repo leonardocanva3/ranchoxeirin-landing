@@ -36,6 +36,7 @@ const nextConfig: NextConfig = {
           "img-src 'self' data: blob:",
           "media-src 'self' blob:",
           "font-src 'self'",
+          "frame-src https://www.google.com",
           "connect-src 'self' https://wa.me https://api.whatsapp.com",
           "base-uri 'self'",
           "form-action 'self'",
