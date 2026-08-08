@@ -547,10 +547,11 @@ p {
 }
 
 .directions-box {
-  grid-column: 2;
+  grid-column: 1 / -1;
   display: grid;
   gap: 18px;
-  margin-top: 30px;
+  width: min(100%, 960px);
+  margin: clamp(30px, 5vw, 48px) auto 0;
   border-top: 1px solid var(--line);
   padding-top: 28px;
 }
@@ -563,13 +564,13 @@ p {
 }
 
 .directions-box p {
-  max-width: 560px;
+  max-width: 680px;
   margin-bottom: 0;
 }
 
 .directions-map {
   width: 100%;
-  min-height: clamp(450px, 36vw, 520px);
+  height: clamp(500px, 38vw, 550px);
   border: 1px solid rgba(255, 250, 240, 0.12);
   border-radius: 18px;
   box-shadow: 0 18px 46px rgba(0, 0, 0, 0.22);
@@ -990,6 +991,11 @@ p {
 
   .directions-box {
     grid-column: auto;
+    width: 100%;
+  }
+
+  .directions-map {
+    height: 450px;
   }
 
   .feature-groups {
@@ -1113,7 +1119,7 @@ p {
   }
 
   .directions-map {
-    min-height: clamp(340px, 70vw, 400px);
+    height: clamp(360px, 82vw, 400px);
     border-radius: 14px;
   }
 
